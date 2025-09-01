@@ -1,0 +1,177 @@
+/* 全局样式变量 */
+$main-color: #45B871;
+$sub-color: #F1F8F1;
+$theme-color: #53A822;
+$theme-color-bg:#77B74D;
+$border-color : #ABB9B4;
+$table-border-color : #D3DCD4;
+$font-high-color : #003C2F;
+$font-medium-color : #595959;
+$placeholder-color:#999;
+$font-main-color:#65816D;
+$fun-yellow:#E0C013;
+$fun-blue:#4695F7;
+$fun-orange:#F88C3D;
+$bg-color : #f6f6f6;
+$bg-color-fff : #fff;
+$bg-color-footer : #292a32;
+$content-color:#fff;
+$link-color: #4e9ae9;
+$btn-text-color:#007AFF;
+$containerWidth:1200px;
+$phone_width: 750;
+$pad_width: 1536;
+$color-header-index:#fefefe;
+$bg-color-header-index:#C69C35;
+$line-color:#ddd;
+$font-color:#111111;
+$font-color-sub:#8C9289;
+
+@function vw($px) {
+  @return ($px / $phone_width) * 100vw;
+}
+
+@function vwPad($px) {
+  @return ($px / $pad_width) * 100vw;
+}
+
+/* mixin通用样式文件*/
+@import './mixin.scss';
+
+/*手机端实现真正的一像素边框*/
+.border-1px,
+.border-bottom-1px,
+.border-top-1px,
+.border-left-1px,
+.border-right-1px {
+  position: relative;
+}
+
+/*线条颜色 黑色*/
+.border-1px::after,
+.border-bottom-1px::after,
+.border-top-1px::after,
+.border-left-1px::after,
+.border-right-1px::after {
+  background-color: $line-color;
+}
+
+/*底边边框一像素*/
+.border-bottom-1px::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  transform-origin: 0 0;
+}
+
+/*上边边框一像素*/
+.border-top-1px::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  transform-origin: 0 0;
+}
+
+/*左边边框一像素*/
+.border-left-1px::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+/*右边边框1像素*/
+.border-right-1px::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+/*边框一像素*/
+.border-1px::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+}
+
+@mixin border1px($borderColor, $radius:null) {
+  position: relative;
+
+  &::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $borderColor;
+
+    @if $radius !=null {
+      border-radius: $radius;
+    }
+  }
+}
+
+/*设备像素比*/
+/*显示屏最小dpr为2*/
+@media (-webkit-min-device-pixel-ratio: 2) {
+
+  .border-bottom-1px::after,
+  .border-top-1px::after {
+    transform: scaleY(0.5);
+  }
+
+  .border-left-1px::after,
+  .border-right-1px::after {
+    transform: scaleX(0.5);
+  }
+
+  .border-1px::after {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+
+/*设备像素比*/
+@media (-webkit-min-device-pixel-ratio: 3) {
+
+  .border-bottom-1px::after,
+  .border-top-1px::after {
+    transform: scaleY(0.333);
+  }
+
+  .border-left-1px::after,
+  .border-right-1px::after {
+    transform: scaleX(0.333);
+  }
+
+  .border-1px::after {
+    width: 300%;
+    height: 300%;
+    transform: scale(0.333);
+    transform-origin: 0 0;
+  }
+}
+

@@ -1,0 +1,147 @@
+/* CSS Document */
+* {
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+}
+
+a,
+span,
+th,
+td,
+i,
+em,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    color: inherit;
+    font-weight: normal;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+    max-height: 100000px;
+}
+
+body {
+    background:#fff;
+}
+
+ul,
+ol,
+li {
+    list-style-type: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+input,
+textarea {
+    border: 0;
+    padding: 0;
+    outline: none;
+}
+
+button {
+    border: 0;
+    background: none;
+    outline: none;
+    padding: 0;
+}
+
+i {
+    font-style: normal;
+}
+
+b {
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+/*link*/
+a {
+    text-decoration: none;
+}
+
+select {
+    border: solid 1px #000;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/**
+     * 滚动条
+     */
+
+*::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-style: solid;
+    border-color: transparent;
+    box-shadow: 100vw 0 0 #DCE0ED inset;
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+    border-width: 0 5px 5px 5px;
+}
+
+*::-webkit-scrollbar-thumb:vertical {
+    border-width: 5px 5px 5px 0;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    box-shadow: 100vw 0 0 #BAC0D5 inset;
+}
+
+*::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+/* 提示样式 */
+.el-message {
+    top: 50% !important;
+}
