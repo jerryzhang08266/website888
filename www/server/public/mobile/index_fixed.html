@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>移动端首页</title>
+    
+    <!-- 预加载CSS -->
+    <link rel="stylesheet" href="/mobile/assets/uni.595f745f.css">
+    <link rel="stylesheet" href="/mobile/assets/index.a360bc86.css">
+    
+    <!-- 移动端兼容性修复脚本 -->
+    <script>
+        // 基础兼容性修复
+        if (!window.console) {
+            window.console = { log: function() {}, error: function() {}, warn: function() {}, info: function() {} };
+        }
+        
+        // 修复移动端配置问题
+        window.__uniConfig = window.__uniConfig || {
+            webPage: {
+                title: '移动端首页',
+                navigationBarTitleText: '首页',
+                navigationBarBackgroundColor: '#ffffff',
+                navigationBarTextStyle: 'black',
+                backgroundColor: '#ffffff'
+            },
+            tabbar: {
+                color: '#7A7E83',
+                selectedColor: '#3cc51f',
+                borderStyle: 'black',
+                backgroundColor: '#ffffff',
+                list: [
+                    {
+                        pagePath: 'pages/index/index',
+                        text: '首页',
+                        iconPath: '/static/tabbar/home.png',
+                        selectedIconPath: '/static/tabbar/home-active.png'
+                    }
+                ]
+            },
+            router: {
+                mode: 'hash',
+                base: '/mobile/'
+            }
+        };
+        
+        // 修复getH5Config函数
+        window.getH5Config = function() {
+            try {
+                return window.__uniConfig.webPage || {
+                    title: '移动端首页',
+                    navigationBarTitleText: '首页'
+                };
+            } catch (e) {
+                console.warn('getH5Config error:', e);
+                return {
+                    title: '移动端首页',
+                    navigationBarTitleText: '首页'
+                };
+            }
+        };
+        
+        // 修复getTabbarConfig函数
+        window.getTabbarConfig = function() {
+            try {
+                return window.__uniConfig.tabbar || { list: [] };
+            } catch (e) {
+                console.warn('getTabbarConfig error:', e);
+                return { list: [] };
+            }
+        };
+        
+        // 移动端viewport高度修复
+        function setVH() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', vh + 'px');
+        }
+        
+        setVH();
+        window.addEventListener('resize', setVH);
+        window.addEventListener('orientationchange', function() {
+            setTimeout(setVH, 100);
+        });
+        
+        // CSS支持检测
+        var supportsCSSVariables = window.CSS && CSS.supports && CSS.supports('color', 'var(--fake-var)');
+        if (!supportsCSSVariables) {
+            document.documentElement.className += ' no-css-variables';
+        }
+        
+        // 触摸事件兼容性
+        if (!('ontouchstart' in window)) {
+            document.documentElement.className += ' no-touch';
+        }
+    </script>
+    
+    <style>
+        /* 移动端基础样式重置 */
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        html, body {
+            height: 100%;
+            height: calc(var(--vh, 1vh) * 100);
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        #app {
+            height: 100%;
+            height: calc(var(--vh, 1vh) * 100);
+            overflow: hidden;
+        }
+        
+        /* CSS变量fallback */
+        .no-css-variables {
+            --primary-color: #007aff;
+            --text-color: #333333;
+            --border-color: #e5e5e5;
+            --background-color: #ffffff;
+        }
+        
+        /* flexbox兼容性 */
+        .flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        
+        .flex-column {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+        
+        .flex-center {
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        /* 加载状态 */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #007aff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loading-text {
+            color: #666666;
+            font-size: 14px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 错误状态 */
+        .error-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 48px;
+            color: #ff3b30;
+            margin-bottom: 20px;
+        }
+        
+        .error-title {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+        
+        .error-message {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .error-button {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+        
+        .error-button:active {
+            background: #0056cc;
+        }
+        
+        /* 无触摸设备的hover效果 */
+        .no-touch .error-button:hover {
+            background: #0056cc;
+        }
+        
+        /* 安全区域适配 */
+        @supports (padding: max(0px)) {
+            .safe-area-inset-top {
+                padding-top: max(20px, env(safe-area-inset-top));
+            }
+            
+            .safe-area-inset-bottom {
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="loading-container" id="loading">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">正在加载中...</div>
+        </div>
+    </div>
+    
+    <script>
+        // 全局错误处理
+        window.addEventListener('error', function(e) {
+            console.error('页面错误:', e.error || e.message);
+            showError('页面加载失败', '请检查网络连接后重试');
+        });
+        
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Promise错误:', e.reason);
+            e.preventDefault();
+            if (e.reason && e.reason.message && e.reason.message.includes('webPage')) {
+                // 特定处理配置相关错误
+                console.log('配置错误已修复，继续加载...');
+            }
+        });
+        
+        function showError(title, message) {
+            const app = document.getElementById('app');
+            if (app) {
+                app.innerHTML = `
+                    <div class="error-container">
+                        <div class="error-icon">⚠️</div>
+                        <div class="error-title">${title}</div>
+                        <div class="error-message">${message}</div>
+                        <button class="error-button" onclick="location.reload()">重新加载</button>
+                    </div>
+                `;
+            }
+        }
+        
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+        
+        // 页面加载超时检测
+        setTimeout(function() {
+            const loading = document.getElementById('loading');
+            if (loading && loading.style.display !== 'none') {
+                console.warn('页面加载超时');
+                showError('加载超时', '页面加载时间过长，请检查网络连接');
+            }
+        }, 15000); // 15秒超时
+        
+        // 检测应用是否成功挂载
+        function checkAppMounted() {
+            const app = document.getElementById('app');
+            if (app && app.children.length > 1) {
+                hideLoading();
+                return true;
+            }
+            return false;
+        }
+        
+        // 定期检查应用状态
+        let checkCount = 0;
+        const checkInterval = setInterval(function() {
+            checkCount++;
+            if (checkAppMounted() || checkCount > 50) { // 最多检查5秒
+                clearInterval(checkInterval);
+                if (checkCount > 50) {
+                    console.warn('应用挂载检测超时');
+                }
+            }
+        }, 100);
+        
+        console.log('移动端页面初始化完成');
+    </script>
+    
+    <!-- 主要应用脚本 -->
+    <script type="module" crossorigin src="/mobile/assets/index.26a6cf84.js" 
+            onerror="showError('脚本加载失败', '无法加载应用脚本，请检查网络连接')">
+    </script>
+    
+    <!-- 页面加载完成后的处理 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('移动端DOM加载完成');
+            
+            // 检查移动端特性
+            const features = {
+                'touch': 'ontouchstart' in window,
+                'orientation': 'orientation' in window,
+                'devicePixelRatio': window.devicePixelRatio || 1,
+                'userAgent': navigator.userAgent
+            };
+            
+            console.log('移动端特性检测:', features);
+            
+            // 添加设备类型类名
+            if (features.touch) {
+                document.documentElement.classList.add('touch-device');
+            }
+            
+            if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                document.documentElement.classList.add('ios-device');
+            } else if (/Android/.test(navigator.userAgent)) {
+                document.documentElement.classList.add('android-device');
+            }
+        });
+        
+        // 页面显示时的处理
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                console.log('页面重新激活');
+                // 可以在这里添加页面重新激活时的逻辑
+            }
+        });
+    </script>
+</body>
+</html>
