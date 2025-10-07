@@ -1,0 +1,324 @@
+/**
+ * 通用文字溢出修复样式
+ * 解决不同屏幕尺寸下的文字显示问题
+ */
+
+/* 基础文字溢出修复类 */
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.text-ellipsis-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* 文字换行控制 */
+.text-break-word {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.text-break-all {
+    word-break: break-all;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-wrap {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* 响应式文字大小 */
+.text-responsive {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: 1.5;
+}
+
+.text-responsive-sm {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    line-height: 1.4;
+}
+
+.text-responsive-lg {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    line-height: 1.6;
+}
+
+/* 容器宽度限制 */
+.container-responsive {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 导航菜单文字修复 */
+.nav-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+}
+
+/* 标题文字修复 */
+.title-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    line-height: 1.2;
+}
+
+.title-text-multiline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    max-height: 2.8em; /* 2行的高度 */
+}
+
+/* 内容文字修复 */
+.content-text {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+}
+
+/* 按钮文字修复 */
+.button-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 表格单元格文字修复 */
+.table-cell-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 0;
+    width: 100%;
+}
+
+/* 卡片标题文字修复 */
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* 列表项文字修复 */
+.list-item-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+}
+
+/* 移动端特殊优化 */
+@media (max-width: 768px) {
+    .mobile-text-sm {
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+    
+    .mobile-text-xs {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .mobile-title {
+        font-size: 1.125rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+    
+    .mobile-content {
+        font-size: 0.875rem;
+        line-height: 1.5;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    /* 移动端导航优化 */
+    .mobile-nav-text {
+        font-size: 0.8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 80px;
+        display: inline-block;
+    }
+}
+
+/* 小屏幕设备优化 */
+@media (max-width: 480px) {
+    .xs-text {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .xs-title {
+        font-size: 1rem;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+    
+    .xs-nav-text {
+        font-size: 0.7rem;
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1200px) {
+    .lg-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .lg-title {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+}
+
+/* 特殊情况修复 */
+.force-wrap {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.force-nowrap {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* 中文文字优化 */
+.chinese-text {
+    word-break: break-all;
+    word-wrap: break-word;
+    line-break: anywhere;
+}
+
+/* 英文文字优化 */
+.english-text {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* 混合文字优化 */
+.mixed-text {
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-break: auto;
+}
+
+/* 输入框文字修复 */
+.input-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.input-text::placeholder {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 工具类 */
+.min-w-0 {
+    min-width: 0;
+}
+
+.max-w-full {
+    max-width: 100%;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+/* 兼容性修复 */
+.text-overflow-fix {
+    /* 现代浏览器 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    /* 旧版浏览器兼容 */
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+}
+
+.multiline-overflow-fix {
+    /* 现代浏览器 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* 旧版浏览器降级 */
+    max-height: 3em;
+    line-height: 1.5;
+}
+
+/* 调试类（开发时使用） */
+.debug-overflow {
+    border: 1px solid red !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.debug-text {
+    outline: 1px dashed blue !important;
+}

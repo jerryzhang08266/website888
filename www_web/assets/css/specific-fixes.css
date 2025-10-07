@@ -1,0 +1,329 @@
+/**
+ * 针对具体页面问题的修复样式
+ * 基于代码分析发现的文字溢出问题进行精确修复
+ */
+
+/* ===== 主页 (index.vue) 修复 ===== */
+
+/* 1. 主页标题溢出修复 */
+.pannel1 .title-box {
+    font-size: clamp(1.8rem, 5vw, 3rem) !important;
+    line-height: 1.3 !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    hyphens: auto !important;
+    text-align: left !important;
+}
+
+/* 移动端标题特殊处理 */
+@media (max-width: 767px) {
+    .pannel1 .title-box {
+        font-size: clamp(1.5rem, 6vw, 2.2rem) !important;
+        line-height: 1.4 !important;
+        margin-bottom: clamp(15px, 4vw, 25px) !important;
+    }
+    
+    /* 移除强制换行，让文字自然换行 */
+    .pannel1 .title-box br {
+        display: none !important;
+    }
+}
+
+/* 2. 按钮文字截断修复 */
+.start-btn {
+    font-size: clamp(0.875rem, 3vw, 1rem) !important;
+    padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    display: inline-block !important;
+    box-sizing: border-box !important;
+    min-width: 200px !important;
+    text-align: center !important;
+}
+
+/* 移动端按钮特殊处理 */
+@media (max-width: 480px) {
+    .start-btn {
+        font-size: clamp(0.75rem, 3.5vw, 0.875rem) !important;
+        padding: clamp(10px, 3vw, 12px) clamp(15px, 4vw, 20px) !important;
+        min-width: 180px !important;
+        white-space: normal !important;
+        line-height: 1.3 !important;
+        height: auto !important;
+    }
+}
+
+/* 3. 痛点列表文字溢出修复 */
+.item-txt {
+    font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+    line-height: 1.5 !important;
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-bottom: clamp(12px, 2.5vw, 18px) !important;
+    max-width: 100% !important;
+}
+
+.item-txt i {
+    flex-shrink: 0 !important;
+    margin-right: clamp(8px, 2vw, 12px) !important;
+    margin-top: 3px !important;
+    font-size: clamp(16px, 3vw, 20px) !important;
+}
+
+/* 移动端痛点列表特殊处理 */
+@media (max-width: 767px) {
+    .item-div .item-txt {
+        font-size: clamp(0.8rem, 3vw, 0.95rem) !important;
+        padding: clamp(8px, 2vw, 12px) 0 !important;
+    }
+}
+
+/* 4. 解决方案标题溢出修复 */
+.sub-title, .head-div {
+    font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+    line-height: 1.4 !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    margin-bottom: clamp(15px, 3vw, 25px) !important;
+}
+
+/* 移动端解决方案标题 */
+@media (max-width: 767px) {
+    .head-div {
+        font-size: clamp(1.1rem, 4.5vw, 1.4rem) !important;
+        padding: clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px) !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* 5. 功能标签溢出修复 */
+.bg-box span, 
+.label1, .label2, .label3, .label4, .label5, .label6, .label7 {
+    font-size: clamp(0.75rem, 2.2vw, 0.9rem) !important;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: calc(100vw - 60px) !important;
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    line-height: 1.3 !important;
+}
+
+/* 移动端功能标签特殊处理 */
+@media (max-width: 767px) {
+    .bg-box span,
+    .label1, .label2, .label3, .label4, .label5, .label6, .label7 {
+        font-size: clamp(0.7rem, 2.8vw, 0.85rem) !important;
+        padding: clamp(6px, 2vw, 10px) clamp(10px, 3vw, 15px) !important;
+        max-width: calc(100vw - 40px) !important;
+        position: relative !important;
+        margin: clamp(4px, 1vw, 8px) !important;
+    }
+}
+
+/* ===== 关于页面 (about/index.vue) 修复 ===== */
+
+/* 关于页面标题修复 */
+.container .pannel1 .title-box {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+    line-height: 1.3 !important;
+    max-width: 100% !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+}
+
+/* 关于页面描述文字修复 */
+.container .pannel1 .txt-box {
+    font-size: clamp(1rem, 3vw, 1.25rem) !important;
+    line-height: 1.6 !important;
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+}
+
+/* ===== 通用响应式修复 ===== */
+
+/* 超小屏幕 (≤320px) */
+@media (max-width: 320px) {
+    .title-box {
+        font-size: 1.3rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    .start-btn {
+        font-size: 0.7rem !important;
+        padding: 8px 12px !important;
+        min-width: 150px !important;
+    }
+    
+    .item-txt {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* 小屏幕手机 (321px-480px) */
+@media (min-width: 321px) and (max-width: 480px) {
+    .title-box {
+        font-size: clamp(1.4rem, 5.5vw, 1.8rem) !important;
+    }
+    
+    .start-btn {
+        font-size: clamp(0.75rem, 3.2vw, 0.85rem) !important;
+        min-width: 160px !important;
+    }
+}
+
+/* 大屏幕手机 (481px-767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .title-box {
+        font-size: clamp(1.6rem, 5vw, 2rem) !important;
+    }
+    
+    .start-btn {
+        font-size: clamp(0.8rem, 3vw, 0.9rem) !important;
+        min-width: 180px !important;
+    }
+}
+
+/* 平板 (768px-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .title-box {
+        font-size: clamp(2rem, 4vw, 2.5rem) !important;
+    }
+    
+    .start-btn {
+        font-size: clamp(0.9rem, 2.5vw, 1rem) !important;
+    }
+}
+
+/* 大屏幕 (1025px-1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .title-box {
+        font-size: clamp(2.2rem, 3vw, 2.8rem) !important;
+    }
+}
+
+/* 超宽屏幕 (>1440px) */
+@media (min-width: 1441px) {
+    .title-box {
+        font-size: 3rem !important;
+        max-width: 1200px !important;
+    }
+    
+    .start-btn {
+        font-size: 1rem !important;
+        max-width: 400px !important;
+    }
+    
+    .item-txt {
+        max-width: 600px !important;
+    }
+}
+
+/* ===== 特殊情况处理 ===== */
+
+/* 横屏手机 */
+@media (max-height: 500px) and (orientation: landscape) {
+    .title-box {
+        font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+        line-height: 1.2 !important;
+    }
+    
+    .start-btn {
+        font-size: clamp(0.75rem, 2.5vw, 0.85rem) !important;
+        padding: 8px 15px !important;
+    }
+}
+
+/* 高分辨率屏幕适配 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .title-box, .start-btn, .item-txt {
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+    }
+}
+
+/* ===== 可访问性增强 ===== */
+
+/* 确保文字对比度 */
+.title-box, .start-btn, .item-txt, .sub-title, .head-div {
+    text-shadow: none !important;
+}
+
+/* 焦点状态优化 */
+.start-btn:focus {
+    outline: 2px solid #45B871 !important;
+    outline-offset: 2px !important;
+}
+
+/* 打印样式优化 */
+@media print {
+    .title-box, .item-txt, .sub-title {
+        font-size: 12pt !important;
+        line-height: 1.4 !important;
+        color: black !important;
+        background: white !important;
+    }
+    
+    .start-btn {
+        display: none !important;
+    }
+}
+
+/* ===== 动画和过渡优化 ===== */
+
+/* 减少动画对文字显示的影响 */
+@media (prefers-reduced-motion: reduce) {
+    .title-box, .start-btn, .item-txt {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* 平滑的字体大小过渡 */
+.title-box, .start-btn, .item-txt, .sub-title, .head-div {
+    transition: font-size 0.3s ease, padding 0.3s ease !important;
+}
+
+/* ===== 浏览器兼容性修复 ===== */
+
+/* IE11 兼容性 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .title-box {
+        font-size: 2rem !important;
+    }
+    
+    .start-btn {
+        font-size: 0.9rem !important;
+        white-space: normal !important;
+    }
+    
+    .item-txt {
+        display: block !important;
+    }
+}
+
+/* Safari 特殊处理 */
+@supports (-webkit-appearance: none) {
+    .title-box, .start-btn, .item-txt {
+        -webkit-text-size-adjust: 100% !important;
+    }
+}
+
+/* Firefox 特殊处理 */
+@-moz-document url-prefix() {
+    .title-box {
+        line-height: 1.35 !important;
+    }
+    
+    .item-txt {
+        word-break: break-word !important;
+    }
+}

@@ -1,0 +1,394 @@
+/**
+ * 全局CSS优化
+ * 针对整个网站的布局和文字显示进行系统性优化
+ */
+
+/* ===== 基础重置和优化 ===== */
+
+/* 确保所有文字元素都有合适的基础样式 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /* 防止iOS设备上的字体大小调整 */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    /* 改善文字渲染 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* 防止水平滚动 */
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* ===== 通用文字优化 ===== */
+
+/* 所有标题的基础优化 */
+h1, h2, h3, h4, h5, h6 {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+}
+
+/* 段落文字优化 */
+p {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* 链接和按钮优化 */
+a, button {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    text-decoration: none;
+}
+
+/* 列表优化 */
+ul, ol {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+/* ===== 容器和布局优化 ===== */
+
+/* 主要容器优化 */
+.container, .container-home {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* 面板容器优化 */
+.pannel1, .pannel2, .pannel3, .pannel4, .pannel5, .pannel6, .pannel7 {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 内容框优化 */
+.content-box, .content-box-m {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===== 响应式文字大小系统 ===== */
+
+/* 基础字体大小 */
+html {
+    font-size: clamp(14px, 2.5vw, 16px);
+}
+
+/* 标题字体大小系统 */
+h1, .title-box {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.2;
+}
+
+h2, .subtitle-box {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.3;
+}
+
+h3, .sub-title {
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    line-height: 1.4;
+}
+
+h4, .head-div {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    line-height: 1.4;
+}
+
+h5, h6 {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.5;
+}
+
+/* 正文字体大小 */
+p, .txt-box, .item-txt {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+    line-height: 1.6;
+}
+
+/* 按钮字体大小 */
+.start-btn, button, .btn {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: 1.4;
+}
+
+/* 小字体元素 */
+.label1, .label2, .label3, .label4, .label5, .label6, .label7,
+.bg-box span, small {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    line-height: 1.4;
+}
+
+/* ===== 移动端特殊优化 ===== */
+
+@media (max-width: 767px) {
+    /* 移动端容器优化 */
+    .container, .container-home {
+        padding-left: clamp(15px, 4vw, 20px);
+        padding-right: clamp(15px, 4vw, 20px);
+    }
+    
+    /* 移动端文字间距优化 */
+    .title-box {
+        margin-bottom: clamp(15px, 4vw, 25px);
+    }
+    
+    .txt-box, p {
+        margin-bottom: clamp(12px, 3vw, 20px);
+    }
+    
+    .item-txt {
+        margin-bottom: clamp(10px, 2.5vw, 15px);
+    }
+    
+    /* 移动端按钮优化 */
+    .start-btn {
+        padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
+        margin: clamp(10px, 3vw, 15px) 0;
+    }
+    
+    /* 移动端标签优化 */
+    .bg-box span,
+    .label1, .label2, .label3, .label4, .label5, .label6, .label7 {
+        margin: clamp(4px, 1vw, 8px);
+        padding: clamp(6px, 2vw, 10px) clamp(10px, 3vw, 15px);
+    }
+}
+
+/* ===== 平板端优化 ===== */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container, .container-home {
+        padding-left: clamp(20px, 3vw, 40px);
+        padding-right: clamp(20px, 3vw, 40px);
+    }
+    
+    .title-box {
+        margin-bottom: clamp(20px, 3vw, 30px);
+    }
+    
+    .start-btn {
+        padding: clamp(15px, 2.5vw, 18px) clamp(25px, 4vw, 35px);
+    }
+}
+
+/* ===== 桌面端优化 ===== */
+
+@media (min-width: 1025px) {
+    .container, .container-home {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    /* 桌面端行长控制 */
+    p, .txt-box {
+        max-width: 65ch; /* 最佳阅读行长 */
+    }
+    
+    .item-txt {
+        max-width: 50ch;
+    }
+}
+
+/* ===== 超宽屏幕优化 ===== */
+
+@media (min-width: 1441px) {
+    .container, .container-home {
+        max-width: 1400px;
+    }
+    
+    /* 超宽屏幕字体大小限制 */
+    .title-box {
+        font-size: 3rem;
+        max-width: 800px;
+    }
+    
+    .start-btn {
+        font-size: 1rem;
+        max-width: 400px;
+    }
+    
+    p, .txt-box {
+        font-size: 1.125rem;
+        max-width: 70ch;
+    }
+    
+    .item-txt {
+        font-size: 1rem;
+        max-width: 55ch;
+    }
+}
+
+/* ===== 特殊设备优化 ===== */
+
+/* 横屏手机优化 */
+@media (max-height: 500px) and (orientation: landscape) {
+    .title-box {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+        line-height: 1.2;
+        margin-bottom: clamp(10px, 2vw, 15px);
+    }
+    
+    .start-btn {
+        font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+        padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 20px);
+    }
+    
+    p, .txt-box, .item-txt {
+        font-size: clamp(0.8rem, 2vw, 0.95rem);
+        line-height: 1.4;
+    }
+}
+
+/* 高分辨率屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ===== 可访问性优化 ===== */
+
+/* 确保足够的颜色对比度 */
+.title-box, .txt-box, .item-txt, .sub-title, .head-div {
+    color: inherit;
+    background: transparent;
+}
+
+/* 焦点状态优化 */
+.start-btn:focus, button:focus, a:focus {
+    outline: 2px solid #45B871;
+    outline-offset: 2px;
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== 打印样式优化 ===== */
+
+@media print {
+    * {
+        color: black !important;
+        background: white !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .title-box, .txt-box, .item-txt {
+        font-size: 12pt;
+        line-height: 1.4;
+        margin-bottom: 0.5em;
+    }
+    
+    .start-btn, button {
+        display: none;
+    }
+    
+    .bg-box span, .label1, .label2, .label3, .label4, .label5, .label6, .label7 {
+        border: 1px solid black;
+        padding: 2pt 4pt;
+        margin: 1pt;
+    }
+}
+
+/* ===== 浏览器兼容性修复 ===== */
+
+/* IE11 兼容性 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .title-box {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+    
+    .start-btn {
+        font-size: 1rem;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    
+    .item-txt {
+        display: block;
+        word-wrap: break-word;
+    }
+}
+
+/* Safari 特殊处理 */
+@supports (-webkit-appearance: none) {
+    .title-box, .start-btn, .item-txt {
+        -webkit-text-size-adjust: 100%;
+    }
+}
+
+/* Firefox 特殊处理 */
+@-moz-document url-prefix() {
+    .title-box {
+        line-height: 1.35;
+    }
+    
+    .item-txt {
+        word-break: break-word;
+    }
+}
+
+/* ===== 性能优化 ===== */
+
+/* GPU加速优化 */
+.title-box, .start-btn {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* 字体加载优化 */
+@font-face {
+    font-display: swap;
+}
+
+/* 图片优化 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== 调试辅助 ===== */
+
+/* 开发环境调试 */
+@media screen and (min-width: 1px) {
+    .debug-text-overflow * {
+        outline: 1px solid rgba(255, 0, 0, 0.3);
+    }
+    
+    .debug-text-overflow .title-box {
+        outline-color: rgba(255, 0, 0, 0.8);
+    }
+    
+    .debug-text-overflow .start-btn {
+        outline-color: rgba(0, 255, 0, 0.8);
+    }
+    
+    .debug-text-overflow .item-txt {
+        outline-color: rgba(0, 0, 255, 0.8);
+    }
+}
