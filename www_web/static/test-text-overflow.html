@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字溢出修复测试页面</title>
+    <link rel="stylesheet" href="/assets/css/text-overflow-fix.css">
+    <style>
+        body {
+            font-family: PingFang SC, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f6f6f6;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        
+        .test-title {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .test-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .test-item-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        /* 模拟网站的实际样式 */
+        .pannel1 .title-box {
+            font-size: 48px;
+            font-weight: bold;
+            color: #003C2F;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .pannel1 .txt-box {
+            font-size: 18px;
+            color: #595959;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .start-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #45B871;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .item-txt {
+            font-size: 16px;
+            color: #005542;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .item-txt i {
+            color: #45B871;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .subtitle-box {
+            font-size: 24px;
+            color: #003C2F;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .bg-box span {
+            display: inline-block;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #003C2F;
+            margin: 5px;
+            border: 2px solid #eeeeee;
+        }
+        
+        /* 测试不同宽度的容器 */
+        .width-test {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .width-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .width-300 { width: 300px; }
+        .width-200 { width: 200px; }
+        .width-150 { width: 150px; }
+        .width-100 { width: 100px; }
+        
+        @media (max-width: 768px) {
+            .width-test {
+                flex-direction: column;
+            }
+            
+            .width-box {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>文字溢出修复测试页面</h1>
+        <p>此页面用于测试文字溢出修复功能在不同屏幕尺寸下的效果。</p>
+        
+        <!-- 测试主页标题和描述 -->
+        <div class="test-section pannel1">
+            <div class="test-title">主页标题和描述测试</div>
+            
+            <div class="test-item">
+                <div class="test-item-title">标题（长文本）：</div>
+                <div class="title-box">中国领先的智能商业解决方案提供商，致力于推动线下商业场景数字化转型</div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-item-title">描述文字：</div>
+                <p class="txt-box">通过端到端的智能商业解决方案，实现运营管理的数字智能化，为降本增效及业务扩张赋能。我们专注于物联网、人工智能、大数据、云计算等技术的商业应用。</p>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-item-title">按钮文字：</div>
+                <a href="#" class="start-btn">30秒，免费获取白皮书及试用账号</a>
+            </div>
+        </div>
+        
+        <!-- 测试痛点列表 -->
+        <div class="test-section">
+            <div class="test-title">痛点列表文字测试</div>
+            
+            <div class="test-item">
+                <div class="item-txt">
+                    <i>●</i>
+                    门店网络经常中断，影响业务正常运营
+                </div>
+                <div class="item-txt">
+                    <i>●</i>
+                    不同厂家设备运维难，技术支持不统一
+                </div>
+                <div class="item-txt">
+                    <i>●</i>
+                    全国门店网络情况不明，缺乏统一监控管理平台
+                </div>
+                <div class="item-txt">
+                    <i>●</i>
+                    简单故障无法即时处理，依赖专业技术人员上门
+                </div>
+            </div>
+        </div>
+        
+        <!-- 测试解决方案标题 -->
+        <div class="test-section">
+            <div class="test-title">解决方案标题测试</div>
+            
+            <div class="test-item">
+                <div class="subtitle-box">全时段业务在线解决方案</div>
+                <div class="subtitle-box">商业场景感知解决方案</div>
+                <div class="subtitle-box">智能化运营管理解决方案</div>
+            </div>
+        </div>
+        
+        <!-- 测试标签文字 */
+        <div class="test-section">
+            <div class="test-title">标签文字测试</div>
+            
+            <div class="test-item bg-box">
+                <span>云端配置</span>
+                <span>连接保障</span>
+                <span>主动监控</span>
+                <span>远程恢复</span>
+                <span>及时上门</span>
+                <span>降本增效</span>
+                <span>安全防护</span>
+                <span>智能分析</span>
+                <span>数据可视化</span>
+                <span>实时报警</span>
+            </div>
+        </div>
+        
+        <!-- 测试不同宽度容器中的文字 -->
+        <div class="test-section">
+            <div class="test-title">不同宽度容器文字测试</div>
+            
+            <div class="width-test">
+                <div class="width-box width-300">
+                    <div class="test-item-title">宽度300px：</div>
+                    <div class="title-box" style="font-size: 24px;">中国领先的智能商业解决方案提供商</div>
+                    <div class="txt-box" style="font-size: 14px;">通过端到端的智能商业解决方案，实现运营管理的数字智能化</div>
+                </div>
+                
+                <div class="width-box width-200">
+                    <div class="test-item-title">宽度200px：</div>
+                    <div class="title-box" style="font-size: 20px;">智能商业解决方案</div>
+                    <div class="txt-box" style="font-size: 12px;">数字智能化运营管理</div>
+                </div>
+                
+                <div class="width-box width-150">
+                    <div class="test-item-title">宽度150px：</div>
+                    <div class="title-box" style="font-size: 16px;">商业解决方案</div>
+                    <div class="txt-box" style="font-size: 11px;">智能化管理</div>
+                </div>
+                
+                <div class="width-box width-100">
+                    <div class="test-item-title">宽度100px：</div>
+                    <div class="title-box" style="font-size: 14px;">解决方案</div>
+                    <div class="txt-box" style="font-size: 10px;">智能管理</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 测试状态显示 -->
+        <div class="test-section">
+            <div class="test-title">修复状态</div>
+            <div id="fix-status">
+                <p>正在检测文字溢出问题...</p>
+                <p>修复统计将在脚本加载后显示</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/assets/js/text-overflow-fix.js"></script>
+    <script>
+        // 显示修复状态
+        function updateStatus() {
+            const statusDiv = document.getElementById('fix-status');
+            if (window.textOverflowFixer) {
+                const stats = window.textOverflowFixer.fixedElements ? window.textOverflowFixer.fixedElements.size : 0;
+                const checks = window.textOverflowFixer.checkCount || 0;
+                
+                statusDiv.innerHTML = `
+                    <p><strong>修复状态：</strong>已启动</p>
+                    <p><strong>已修复元素：</strong>${stats} 个</p>
+                    <p><strong>检查次数：</strong>${checks} 次</p>
+                    <p><strong>当前屏幕宽度：</strong>${window.innerWidth}px</p>
+                    <p><strong>设备类型：</strong>${window.innerWidth < 768 ? '移动端' : window.innerWidth < 1200 ? '平板端' : 'PC端'}</p>
+                `;
+            } else {
+                statusDiv.innerHTML = '<p><strong>状态：</strong>修复脚本未加载</p>';
+            }
+        }
+        
+        // 定期更新状态
+        setInterval(updateStatus, 2000);
+        
+        // 窗口大小变化时更新状态
+        window.addEventListener('resize', () => {
+            setTimeout(updateStatus, 500);
+        });
+        
+        // 页面加载完成后更新状态
+        window.addEventListener('load', () => {
+            setTimeout(updateStatus, 1000);
+        });
+    </script>
+</body>
+</html>

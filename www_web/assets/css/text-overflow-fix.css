@@ -1,0 +1,425 @@
+/**
+ * www_web网站文字溢出修复样式
+ * 针对Nuxt.js网站的响应式文字显示优化
+ */
+
+/* 基础文字溢出修复 */
+.text-overflow-fix {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.text-overflow-multiline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.text-overflow-3lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* 中文文字优化 */
+.chinese-text-fix {
+    word-break: break-all;
+    word-wrap: break-word;
+    line-break: anywhere;
+    overflow-wrap: break-word;
+}
+
+/* 标题文字修复 */
+.title-text-fix {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    line-height: 1.2;
+}
+
+.title-multiline-fix {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* 按钮文字修复 */
+.btn-text-fix {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 导航文字修复 */
+.nav-text-fix {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+}
+
+/* 内容文字修复 */
+.content-text-fix {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+}
+
+/* 响应式文字大小修复 */
+.responsive-text {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    line-height: 1.5;
+}
+
+.responsive-title {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    line-height: 1.3;
+}
+
+.responsive-subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    line-height: 1.4;
+}
+
+/* 针对网站特定元素的修复 */
+
+/* 主页标题修复 */
+.pannel1 .title-box {
+    word-wrap: break-word;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+}
+
+/* 主页描述文字修复 */
+.pannel1 .txt-box {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+}
+
+/* 按钮文字修复 */
+.start-btn {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+/* 痛点列表文字修复 */
+.item-txt {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.item-txt i {
+    flex-shrink: 0;
+}
+
+/* 解决方案标题修复 */
+.subtitle-box {
+    word-wrap: break-word;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+}
+
+/* 品牌标签修复 */
+.label-box span,
+.bg-box span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 移动端特殊修复 */
+@media screen and (max-width: 767px) {
+    /* 移动端标题修复 */
+    .pannel1 .title-box {
+        font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+        line-height: 1.2;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+    
+    /* 移动端描述文字修复 */
+    .pannel1 .txt-box {
+        font-size: clamp(0.875rem, 3vw, 1.125rem) !important;
+        line-height: 1.5;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    /* 移动端按钮文字修复 */
+    .start-btn {
+        font-size: clamp(0.875rem, 3vw, 1rem) !important;
+        padding: 0.75rem 1rem;
+        line-height: 1.2;
+        white-space: normal;
+        text-align: center;
+        word-wrap: break-word;
+    }
+    
+    /* 移动端痛点列表修复 */
+    .item-txt {
+        font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important;
+        line-height: 1.4;
+        word-wrap: break-word;
+        word-break: break-word;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    /* 移动端子标题修复 */
+    .head-div {
+        font-size: clamp(1rem, 4vw, 1.25rem) !important;
+        line-height: 1.3;
+        word-wrap: break-word;
+        word-break: keep-all;
+        padding-right: 2rem;
+    }
+    
+    /* 移动端解决方案标题修复 */
+    .content-box-m h3 {
+        font-size: clamp(1.125rem, 4vw, 1.5rem) !important;
+        line-height: 1.3;
+        word-wrap: break-word;
+        word-break: keep-all;
+        margin-bottom: 1rem;
+    }
+    
+    /* 移动端解决方案描述修复 */
+    .content-box-m p {
+        font-size: clamp(0.875rem, 3vw, 1rem) !important;
+        line-height: 1.5;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    /* 移动端标签修复 */
+    .bg-box span {
+        font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important;
+        line-height: 1.2;
+        padding: 0.5rem 0.75rem;
+        min-width: auto;
+        width: auto;
+        max-width: 90%;
+        white-space: normal;
+        text-align: center;
+        word-wrap: break-word;
+    }
+    
+    /* 移动端品牌文字修复 */
+    .brand-txt {
+        font-size: clamp(0.875rem, 3vw, 1rem) !important;
+        line-height: 1.5;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    /* 移动端标签横向滚动修复 */
+    .txt-pannel {
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .txt-pannel span {
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* 平板端修复 */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    /* 平板端标题修复 */
+    .pannel1 .title-box {
+        font-size: clamp(2rem, 5vw, 3rem) !important;
+        line-height: 1.2;
+        word-break: keep-all;
+    }
+    
+    /* 平板端描述文字修复 */
+    .pannel1 .txt-box {
+        font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
+    
+    /* 平板端按钮文字修复 */
+    .start-btn {
+        font-size: clamp(1rem, 2.5vw, 1.125rem) !important;
+        padding: 1rem 1.5rem;
+        white-space: nowrap;
+    }
+    
+    /* 平板端痛点列表修复 */
+    .item-txt {
+        font-size: clamp(0.875rem, 2vw, 1rem) !important;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+}
+
+/* PC端修复 */
+@media (min-width: 1200px) {
+    /* PC端确保文字不会在小屏幕上溢出 */
+    .pannel1 .title-box {
+        max-width: 100%;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+    
+    .pannel1 .txt-box {
+        max-width: 100%;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    .start-btn {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .item-txt {
+        max-width: 100%;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+}
+
+/* 通用容器修复 */
+.container-fix {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.flex-text-fix {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* 输入框文字修复 */
+.el-input input {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.el-input input::placeholder {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 链接文字修复 */
+a {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 表格文字修复 */
+table td,
+table th {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 0;
+}
+
+/* 卡片文字修复 */
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.card-content {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+}
+
+/* 工具类 */
+.text-break {
+    word-break: break-word !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+.text-nowrap {
+    white-space: nowrap !important;
+}
+
+.text-wrap {
+    white-space: normal !important;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.overflow-auto {
+    overflow: auto !important;
+}
+
+.max-w-full {
+    max-width: 100% !important;
+}
+
+.min-w-0 {
+    min-width: 0 !important;
+}
+
+/* 调试类（开发时使用） */
+.debug-text-overflow {
+    outline: 2px dashed red !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.debug-container {
+    border: 1px solid blue !important;
+    background: rgba(0, 0, 255, 0.05) !important;
+}

@@ -66,6 +66,7 @@ export default {
     css: [
         'assets/css/global.css',
         'assets/css/animate.min.css',
+        'assets/css/text-overflow-fix.css', // 文字溢出修复样式
         'element-ui/lib/theme-chalk/index.css',
         'element-ui/lib/theme-chalk/display.css',
         '@/static/font/iconfont.css'
@@ -80,7 +81,8 @@ export default {
         '@/plugins/axios',
         '@/plugins/filters',
         '@/plugins/mixin',
-        { src: '@/plugins/storage', mode: 'client' }
+        { src: '@/plugins/storage', mode: 'client' },
+        { src: '@/plugins/text-overflow-fix', mode: 'client' } // 文字溢出修复插件
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
